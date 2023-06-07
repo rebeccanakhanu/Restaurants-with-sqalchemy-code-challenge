@@ -75,12 +75,12 @@ class Customer(Base):
             if review.restaurant == restaurant:
                 self.reviews.remove(review)
                 session.delete(review)
-    session.commit()
+                session.commit()
 
 
-@classmethod
-def fanciest(cls):
-    return session.query(cls).order_by(cls.price.desc()).first()
+    @classmethod
+    def fanciest(cls):
+        return session.query(cls).order_by(cls.price.desc()).first()
 
 
 class CustomerRestaurant(Base):
