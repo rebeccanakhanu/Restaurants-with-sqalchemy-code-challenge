@@ -3,6 +3,7 @@ import random
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 import ipdb;
+from models import Restaurant, Review,customers
 
 
 if __name__ == '__main__':
