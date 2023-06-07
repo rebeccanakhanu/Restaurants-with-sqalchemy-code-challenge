@@ -65,18 +65,17 @@ class Customer(Base):
         return max(self.reviews, key=lambda review: review.star_rating).restaurant
 
     def add_review(self, restaurant, rating):
-        review = Review(star_rating=rating)
-        review.restaurant = restaurant
-        review.customer = self
-        session.add(review)
-        session.commit()
+     review = Review(star_rating=rating, restaurant=restaurant)
+     self.reviews.append(review)
+     session.add(review)
+
 
     def delete_reviews(self, restaurant):
         for review in self.reviews:
             if review.restaurant == restaurant:
                 self.reviews.remove(review)
                 session.delete(review)
-        session.commit()
+    session.commit()
 
 
 @classmethod
